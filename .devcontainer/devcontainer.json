@@ -1,0 +1,6 @@
+{
+  "name": "Default Python Workspace with dependencies from requirements.txt",
+  "image": "://microsoft.com",
+  // Install requirements
+  "postCreateCommand": "pip install -r requirements.txt"
+}
