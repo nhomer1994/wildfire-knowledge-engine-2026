@@ -1,5 +1,1 @@
-{
-  "name": "Stable Python Portfolio Workspace",
-  "image": "://microsoft.com",
-  "postCreateCommand": "pip install --upgrade pip && pip install -r requirements.txt"
-}
+{}
