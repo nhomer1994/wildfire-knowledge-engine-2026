@@ -23,7 +23,7 @@ def run_engine():
         response = executor.invoke({"input": user_query})
         
         print("\n" + "=" * 50)
-        print("🎯 FINAL RECRUITER PORTFOLIO DECODED OUTPUT:")
+        print("🎯 FINAL DECODED OUTPUT:")
         print("=" * 50)
         print(response["output"])
         print("=" * 50 + "\n")
