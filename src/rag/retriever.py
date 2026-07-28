@@ -1,7 +1,7 @@
 # src/rag/retriever.py
 from langchain_core.vectorstores import InMemoryVectorStore
 from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_core.tools import Tool
+from langchain_core.tools import tool
 from src.rag.ingest import load_wildfire_reports
 
 def initialize_vector_retriever():
@@ -25,23 +25,22 @@ def initialize_vector_retriever():
         
     return vector_store.as_retriever(search_kwargs={"k": 1})
 
-def get_internal_knowledge_tool():
+# Initialize the underlying retriever instance once to save memory
+_retriever_instance = initialize_vector_retriever()
+
+@tool("internal_knowledge_base")
+def get_internal_knowledge_tool(query: str) -> str:
     """
-    Wraps the vector database retriever as a LangChain Tool asset
-    so the routing agent can evaluate and execute it.
+    Use this tool to search internal official situation reports, 
+    archived crisis declarations, operational agency briefs, and local 
+    baseline data for the 2026 European wildfire events. 
+    Input should be a simple keyword search query string focusing on location names.
     """
-    retriever = initialize_vector_retriever()
+    # Execute the text matrix lookup matching user query strings
+    matched_docs = _retriever_instance.invoke(query)
     
-    internal_tool = Tool(
-        name="internal_knowledge_base",
-        description=(
-            "Use this tool to search internal official situation reports, "
-            "archived crisis declarations, operational agency briefs, and local "
-            "baseline data for the 2026 European wildfire events. "
-            "Input should be a simple search query string focusing on locations."
-        ),
-        # Lambda wrapper allows standard text strings to pass directly into the vector invoke query
-        func=lambda query: "\n\n".join([doc.page_content for doc in retriever.invoke(query)])
-    )
-    
-    return internal_tool
+    # Unpack and combine the results into a clean string string for the LLM
+    if not matched_docs:
+        return "No matching internal records discovered for this query location."
+        
+    return "\n\n".join([doc.page_content for doc in matched_docs])
