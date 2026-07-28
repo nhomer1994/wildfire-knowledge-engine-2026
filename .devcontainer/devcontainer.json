@@ -1,5 +1,5 @@
 {
   "name": "Default Python Workspace",
   // 🚀 Runs your custom bash setup script automatically once the container is created
-  "postCreateCommand": "bash pip install -r requirements.txt"
+  "postCreateCommand": "bash -c 'pip install -r requirements.txt'"
 }
