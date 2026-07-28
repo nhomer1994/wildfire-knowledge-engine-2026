@@ -1,0 +1,14 @@
+ID: 001
+Region: Gironde / Bordeaux, France
+Date: July 2026
+Status: Extreme forest fires are burning across the Gironde department near Bordeaux. Over 200,000 residents have been evacuated from high-risk zones. Local fire services have deployed 1,500 personnel alongside water-bombing aircraft. Strong winds and a 42°C heatwave are complicating containment efforts.
+
+ID: 002
+Region: Ávila / Madrid, Spain
+Date: July 2026
+Status: A massive wildfire flank is moving across the province of Ávila, threatening residential areas northwest of Madrid. Emergency services have initiated mandatory evacuations for 15 towns. Dry thunderstorms and high wind gusts have caused the fire front to jump key firebreaks.
+
+ID: 003
+Region: Valencia, Spain
+Date: July 2026
+Status: Fire crews are battling an aggressive blaze in the mountainous terrain of inland Valencia. The regional government has requested military assistance (UME). Embers have ignited spot fires across agricultural valleys, making containment highly challenging.
